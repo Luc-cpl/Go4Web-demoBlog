@@ -22,9 +22,18 @@
     "template":"user/template.html",
     "files":{
       "body": "user/user.html",
-      "js": "user/user.js"
+      "js" : "user/user.js"
     },
     "auth": true
+  },
+  {
+    "url":"new",
+    "template":"user/template.html",
+    "files":{
+      "html":"user/newPost.html",
+      "js":"user/newPost.js"
+    },
+    "auth":true
   },
   {
     "url": "404",

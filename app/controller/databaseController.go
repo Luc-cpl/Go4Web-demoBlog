@@ -24,7 +24,7 @@ const (
 	writeWait      = 10 * time.Second    // Time allowed to write a message to the peer.
 	pongWait       = 60 * time.Second    // Time allowed to read the next pong message from the peer.
 	pingPeriod     = (pongWait * 9) / 10 // Send pings to peer with this period. Must be less than pongWait.
-	maxMessageSize = 512                 // Maximum message size allowed from peer.
+	maxMessageSize = 512000              // Maximum message size allowed from peer.
 )
 
 var upgrader = websocket.Upgrader{
@@ -195,7 +195,7 @@ func check(user mgoS.User, request []mgoS.Request) (response []interface{}, err 
 		if err != nil {
 			return nil, err
 		}
-		json.Unmarshal(resp, &respInter[key])
+		err = json.Unmarshal(resp, &respInter[key])
 	}
 	return respInter, nil
 }
