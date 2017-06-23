@@ -11,7 +11,10 @@
         "posts":{
             "titulo": "g-read a-update",
             "tags": "g-read a-update",
-            "texto": "g-read a-update"
+            "texto": "g-read a-update",
+            "create-at": "g-read a-update",
+            "update-at": "g-read a-update",
+            "_id": "g-read"
         },
         "posts_auth": "a-create a-delete"
     }

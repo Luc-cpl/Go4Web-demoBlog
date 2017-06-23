@@ -22,7 +22,8 @@
     "template":"user/template.html",
     "files":{
       "body": "user/user.html",
-      "js" : "user/user.js"
+      "js" : "user/user.js",
+      "ws":"ws.js"
     },
     "auth": true
   },
@@ -31,7 +32,18 @@
     "template":"user/template.html",
     "files":{
       "html":"user/newPost.html",
-      "js":"user/newPost.js"
+      "js":"user/newPost.js",
+      "ws":"ws.js"
+    },
+    "auth":true
+  },
+  {
+    "url":"update",
+    "template":"user/template.html",
+    "files":{
+      "html":"user/update.html",
+      "js":"user/update.js",
+      "ws":"ws.js"
     },
     "auth":true
   },

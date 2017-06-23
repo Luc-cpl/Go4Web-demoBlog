@@ -1,16 +1,13 @@
-var  ws = initWS();
-
-function initWS() {
-    var socket = new WebSocket("ws://localhost:8080/ws");
-        
-    socket.onopen = function() {
+    ws.onopen = function() {
         var request = JSON.stringify({
             request: [
                 {
                     method:"find",
                     collection:"posts",
                     values:{
-                        titulo: ""
+                        titulo: "",
+                        texto: "",
+                        _id: ""
                     }              
                 },
             ],
@@ -19,19 +16,23 @@ function initWS() {
         ws.send(request)
     };
 
-    socket.onmessage = function (e) {
+    ws.onmessage = function (e) {
         var json = JSON.parse(e.data);
         var container = $("#posts");
+        var htmlStr = "";
         json.forEach(function(element) {
             element.forEach(function(e){
-                container.html("</br>"+e.titulo);
+                var req = `[{"method":"readID","collection":"posts","values":{"titulo":"","texto":"","tags":"","_id":""},"id":"` + e._id + `"}]`;
+                var href = `href='/update/request:` + req + `'`;
+                htmlStr = e.titulo+`<a `+ href + `>Update</a><br>` + htmlStr;
             }, this);
         }, this);
+        container.html(htmlStr);
     }
 
-    socket.onclose = function () {
-        var container = $("#new");
+    ws.onclose = function () {
+        var container = $("#posts");
         container.append("<p>Socket closed</p>");
     }
-    return socket;
-}
+
+

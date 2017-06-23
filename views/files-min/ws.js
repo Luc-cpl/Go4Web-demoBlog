@@ -1,0 +1,1 @@
+"use strict";function initWS(){return new WebSocket("ws://localhost:8080/ws")}var ws=initWS();
